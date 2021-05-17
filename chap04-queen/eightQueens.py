@@ -1,5 +1,20 @@
-from noConflicts import noConflicts
+"""
+衝突がないかチェック
+"""
+def noConflicts(board, current):
+    for i in range(current):
+        if (board[i] == board[current]):
+            return False
+        if (current -i == abs(board[current] - board[i])):
+            return False
+    return True
 
+
+"""
+-1  =>  列にクイーンが無いことを意味する．
+ 0  =>  その列の1行目にクイーンがあることを意味する．
+ 3  =>  その列の4行目にクイーンがあることを意味する．
+"""
 def EightQueens(n=8):
     board = [-1] * n
     for i in range(n):
@@ -33,3 +48,7 @@ def EightQueens(n=8):
                                     if noConflicts(board, 7):
                                         print(board)
     return
+
+
+if __name__ == "__main__":
+    EightQueens(8)
